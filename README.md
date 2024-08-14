@@ -26,8 +26,6 @@ Below you can see the repository structure, the tables are made with the sql scr
 | `docker-compose.yml`             | YAML file for Docker Compose, used to define and run multi-container Docker applications.         |
 
 
-
-
 If another container needs to connect to the postgress database this is how it can be done, given it has access to the same network
 ```
 conn = psycopg2.connect(
@@ -38,3 +36,7 @@ conn = psycopg2.connect(
     port="5432"
 )
 ```
+
+Further steps
+- add the built docker to docker hub
+- make flask parameterized routes for each user
