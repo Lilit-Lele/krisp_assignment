@@ -5,7 +5,7 @@ Assignment for Associate Data Engineer role
 |----------------------------------|---------------------------------------------------------------------------------------------------|
 | `.vscode/`                       | Directory containing Visual Studio Code configuration files for the project.                      |
 | `database/`                      | Directory containing files related to database setup and configuration.                           |
-|   `database/Dockerfile`          | Dockerfile for the database service, specifying the environment for the PostgreSQL container.     |
+| &ensp;`database/Dockerfile`          | Dockerfile for the database service, specifying the environment for the PostgreSQL container.     |
 | `init-scripts/`                  | Directory for database initialization scripts that run when the PostgreSQL container starts.      |
 |   `init-scripts/data_tables.sql` | SQL script for creating necessary tables in the PostgreSQL database.                              |
 | `web_data/`                      | Directory containing the web application files,Flask-related code and templates.                  |
