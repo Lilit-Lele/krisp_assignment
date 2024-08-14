@@ -19,6 +19,8 @@ Assignment 1: data ingestion pipeline
 
 
 If another container needs to connect to the postgress database this is how it can be done, given it has access to the same network
+
+&emsp;
 '''
 conn = psycopg2.connect(
     dbname="mydatabase",
