@@ -11,10 +11,10 @@ for shuttting down run
 
 Below you can see the repository structure, the tables are made with the sql script with database/init-scripts/data_tables.slq script, the scripts in the web_data are used to make a Flask web application that interacts with a PostgreSQL database and displays user, session, and metrics data. 
 
-| **File/Directory**               | **Description**                                                                                   |
-|----------------------------------|---------------------------------------------------------------------------------------------------|
-| `.vscode/`                       | Directory containing Visual Studio Code configuration files for the project.                      |
-| `database/`                      | Directory containing files related to database setup and configuration.                           |
+| **File/Directory**                  | **Description**                                                                                   |
+|-------------------------------------|---------------------------------------------------------------------------------------------------|
+| `.vscode/`                          | Directory containing Visual Studio Code configuration files for the project.                      |
+| `database/`                         | Directory containing files related to database setup and configuration.                           |
 | &emsp;`database/Dockerfile`          | Dockerfile for the database service, specifying the environment for the PostgreSQL container.     |
 | `init-scripts/`                  | Directory for database initialization scripts that run when the PostgreSQL container starts.      |
 | &emsp;`init-scripts/data_tables.sql` | SQL script for creating necessary tables in the PostgreSQL database.                              |
