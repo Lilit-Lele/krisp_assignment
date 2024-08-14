@@ -1,0 +1,44 @@
+{
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MySQL",
+            "database": "my_database",
+            "username": "postgres",
+            "name": "Local PostgreSQL"
+        },
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5433,
+            "driver": "MySQL",
+            "database": "my_database",
+            "username": "postgres",
+            "name": "postgres"
+        },
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5433,
+            "driver": "MySQL",
+            "database": "postgres",
+            "username": "postgres",
+            "name": "postgres",
+            "password": ""
+        }
+    ]
+}

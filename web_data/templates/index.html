@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generated Data</title>
+</head>
+<body>
+    <h1>Users Table</h1>
+    <table border="1">
+        <tr>
+            <th>User ID</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Created At</th>
+        </tr>
+        {% for user in users %}
+        <tr>
+            <td>{{ user[0] }}</td>
+            <td>{{ user[1] }}</td>
+            <td>{{ user[2] }}</td>
+            <td>{{ user[3] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h1>Sessions Table</h1>
+    <table border="1">
+        <tr>
+            <th>Session ID</th>
+            <th>User ID</th>
+            <th>Session Start</th>
+            <th>Session End</th>
+        </tr>
+        {% for session in sessions %}
+        <tr>
+            <td>{{ session[0] }}</td>
+            <td>{{ session[1] }}</td>
+            <td>{{ session[2] }}</td>
+            <td>{{ session[3] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h1>Metrics Table</h1>
+    <table border="1">
+        <tr>
+            <th>Metric ID</th>
+            <th>User ID</th>
+            <th>Metric Value</th>
+            <th>Timestamp</th>
+        </tr>
+        {% for metric in metrics %}
+        <tr>
+            <td>{{ metric[0] }}</td>
+            <td>{{ metric[1] }}</td>
+            <td>{{ metric[2] }}</td>
+            <td>{{ metric[3] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

@@ -1,0 +1,71 @@
+# # version: '3'
+# services:
+#   postgres:
+#     image: postgres:16  # Use the official PostgreSQL image
+#     container_name: my_postgres_container
+#     ports:
+#       - "5432:5432"  # Map port 5432 on the host to port 5432 in the container
+#     environment:
+#       POSTGRES_USER: myuser  # Environment variable for PostgreSQL username
+#       POSTGRES_PASSWORD: mypassword  # Environment variable for PostgreSQL password
+#       POSTGRES_DB: mydatabase  # Environment variable for the default database name
+#     volumes:
+#       - pgdata:/var/lib/postgresql/data  # Persist PostgreSQL data
+#       - ./init-scripts:/docker-entrypoint-initdb.d  # Mount initialization scripts (optional)
+#       # - ./data:/data  # Mount the directory containing CSV files
+
+#   python-script:
+#     build: .
+#     depends_on:
+#       - postgres
+#     environment:
+#       - POSTGRES_DB=mydatabase
+#       - POSTGRES_USER=myuser
+#       - POSTGRES_PASSWORD=mypassword
+#     command: python query_database.py
+
+version: '3'
+services:
+  postgres:
+    image: postgres:16
+    container_name: my_postgres_container
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: mydatabase
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./init-scripts:/docker-entrypoint-initdb.d
+
+  python-script:
+    build: .
+    depends_on:
+      - postgres
+    environment:
+      - POSTGRES_DB=mydatabase
+      - POSTGRES_USER=myuser
+      - POSTGRES_PASSWORD=mypassword
+    command: python query_database.py
+
+  flask-app:
+    build:
+      context: ./web_data
+    environment:
+      - FLASK_URL=http://localhost:5000
+      - POSTGRES_DB=mydatabase
+      - POSTGRES_USER=myuser
+      - POSTGRES_PASSWORD=mypassword
+      - POSTGRES_HOST=postgres  # Ensure the Flask app uses the correct host
+      - POSTGRES_PORT=5432
+    volumes:
+      - ./web_data:/usr/src/app
+    ports:
+      - "5000:5000"
+    depends_on:
+      - postgres
+
+volumes:
+  pgdata:
+
