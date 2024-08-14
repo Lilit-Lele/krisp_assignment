@@ -5,11 +5,11 @@ Assignment 1: data ingestion pipeline
 
 To run these containers, clone this repository and run 
 ``` docker compose up --build ```
-from this repository table from the docker terminal 
+from this repository folder from the docker terminal.
 for shuttting down run
 ``` docker compose down ```
 
-Below you can see the repository structure, the tables are made with the sql script with database/init-scripts/data_tables.slq script, the scripts in the web_data are used to make a Flask web application that interacts with a PostgreSQL database and displays user, session, and metrics data. 
+Below you can see the repository structure, the data tables are made with the sql script in database/init-scripts folder, the scripts in the web_data are used to make a Flask web application that interacts with a PostgreSQL database and displays user, session, and metrics data tables according to the templete. 
 
 | **File/Directory**                  | **Description**                                                                                   |
 |-------------------------------------|---------------------------------------------------------------------------------------------------|
@@ -26,7 +26,7 @@ Below you can see the repository structure, the tables are made with the sql scr
 | `docker-compose.yml`             | YAML file for Docker Compose, used to define and run multi-container Docker applications.         |
 
 
-If another container needs to connect to the postgress database this is how it can be done, given it has access to the same network
+To connect another container to the postgress database this parameters should be used, connection will be possible given it has access to the same network.
 ```
 conn = psycopg2.connect(
     dbname="mydatabase",
