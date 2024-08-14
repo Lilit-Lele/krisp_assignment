@@ -7,6 +7,7 @@ import time
 
 app = Flask(__name__)
 
+#conect to db
 def get_db_connection():
     retries = 5
     while retries > 0:
@@ -25,7 +26,7 @@ def get_db_connection():
             time.sleep(5)
     raise Exception("Could not connect to the database after multiple attempts")
 
-# Function to generate random timestamps
+#generate random timestamps
 def random_timestamp(start, end):
     return start + timedelta(seconds=random.randint(0, int((end - start).total_seconds())))
 
@@ -42,7 +43,7 @@ def insert_data(start):
     users_df = pd.DataFrame(users_data)
 
     for i in range(len(users_df)):
-        # Check if email already exists
+        #check if email already exists
         cur.execute("SELECT COUNT(*) FROM users WHERE email = %s", (users_df.iloc[i]['email'],))
         if cur.fetchone()[0] == 0:
             cur.execute(
@@ -50,10 +51,10 @@ def insert_data(start):
                 (users_df.iloc[i]['username'], users_df.iloc[i]['email'], users_df.iloc[i]['created_at'])
             )
 
-    # Insert data into 'sessions' table
+    #insert data into 'sessions' table
     cur.execute("SELECT user_id FROM users")
     user_ids = [row[0] for row in cur.fetchall()]
-    print(f"Fetched User IDs: {user_ids}")
+    #print(f"Fetched User IDs: {user_ids}")
 
     sessions_data = {
         'user_id': [int(random.choice(user_ids)) for _ in range(20)],
@@ -74,7 +75,7 @@ def insert_data(start):
              sessions_df.iloc[i]['app_version'])
         )
 
-    # Insert data into 'metrics' table
+    #insert data into 'metrics' table
     cur.execute("SELECT session_id FROM sessions")
     session_ids = [row[0] for row in cur.fetchall()]
     print(f"Fetched Session IDs: {session_ids}")
@@ -111,16 +112,14 @@ def populate():
 
     conn = get_db_connection()
     cur = conn.cursor()
-    # Fetch users
-    cur.execute('SELECT * FROM users;')
+    
+    cur.execute('SELECT * FROM users LIMIT 20;')
     users = cur.fetchall()
 
-    # Fetch sessions
-    cur.execute('SELECT * FROM sessions;')
+    cur.execute('SELECT * FROM sessions LIMIT 20;')
     sessions = cur.fetchall()
 
-    # Fetch metrics
-    cur.execute('SELECT * FROM metrics;')
+    cur.execute('SELECT * FROM metrics LIMIT 20;')
     metrics = cur.fetchall()
 
     cur.close()
@@ -133,15 +132,13 @@ def populate():
 def index():
     conn = get_db_connection()
     cur = conn.cursor()
-    # Fetch users
+    
     cur.execute('SELECT * FROM users;')
     users = cur.fetchall()
 
-    # Fetch sessions
     cur.execute('SELECT * FROM sessions;')
     sessions = cur.fetchall()
 
-    # Fetch metrics
     cur.execute('SELECT * FROM metrics;')
     metrics = cur.fetchall()
 
@@ -155,15 +152,14 @@ def delete_data():
     conn = get_db_connection()
     cur = conn.cursor()
 
-    # Delete content from the tables
+    #delete content from all  tables
     cur.execute('DELETE FROM metrics;')
     cur.execute('DELETE FROM sessions;')
     cur.execute('DELETE FROM users;')
     
-    # Commit the transaction
     conn.commit()
 
-    # Fetch the empty tables to pass to the template
+    #get empty tables, pass to the template
     cur.execute('SELECT * FROM users;')
     users = cur.fetchall()
 
