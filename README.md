@@ -1,6 +1,8 @@
 # krisp_assignment
 Assignment for Associate Data Engineer role
 
+Assignment 1: data ingestion pipeline
+
 | **File/Directory**               | **Description**                                                                                   |
 |----------------------------------|---------------------------------------------------------------------------------------------------|
 | `.vscode/`                       | Directory containing Visual Studio Code configuration files for the project.                      |
