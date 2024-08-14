@@ -23,3 +23,14 @@ i probably do not need the query_databse.py with it's docker
 
 
 
+If another container needs to connect to the postgress database this is how it can be done, given it has access to the same network
+# connection details
+'''
+conn = psycopg2.connect(
+    dbname="mydatabase",
+    user="myuser",
+    password="mypassword",
+    host="postgres",  
+    port="5432"
+)
+'''
