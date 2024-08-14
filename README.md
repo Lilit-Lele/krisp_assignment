@@ -16,11 +16,6 @@ Assignment 1: data ingestion pipeline
 | &emsp;`web_data/Dockerfile`          | Dockerfile for the web service, specifying the environment for the Flask application container.   |
 | `generate_data.py`               | Python script responsible for generating and inserting random data into the PostgreSQL database.  |
 | `docker-compose.yml`             | YAML file for Docker Compose, used to define and run multi-container Docker applications.         |
-| `Dockerfile` (root level)        | Dockerfile for the main application container, typically the web application.                     |
-| `query_database.py`              | Python script that queries the PostgreSQL database to retrieve and manipulate data.               |
-
-i probably do not need the query_databse.py with it's docker
-
 
 
 If another container needs to connect to the postgress database this is how it can be done, given it has access to the same network
