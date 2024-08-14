@@ -20,7 +20,7 @@ Below you can see the repository structure, the tables are made with the sql scr
 | &emsp;`init-scripts/data_tables.sql` | SQL script for creating necessary tables in the PostgreSQL database.                              |
 | `web_data/`                      | Directory containing the web application files,Flask-related code and templates.                  |
 | &emsp;`web_data/templates/`          | Directory for HTML templates used by the Flask application.                                       |
-| &emsp;`web_data/templates/index.html`| HTML file that displays data from the database on the web interface.                              |
+| &emsp; &emsp;`web_data/templates/index.html`| HTML file that displays data from the database on the web interface.                              |
 | &emsp;`web_data/Dockerfile`          | Dockerfile for the web service, specifying the environment for the Flask application container.   |
 | &emsp;`web_data/generate_data.py`    | Python script responsible for generating and inserting random data into the PostgreSQL database.  |
 | `docker-compose.yml`             | YAML file for Docker Compose, used to define and run multi-container Docker applications.         |
