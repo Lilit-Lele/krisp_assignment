@@ -9,7 +9,7 @@ from this repository folder from the docker terminal.
 For shuttting down run
 ``` docker compose down ```
 
-Below you can see the repository structure, the data tables are made with the sql script in database/init-scripts folder, the scripts in the web_data are used to make a Flask web application that interacts with a PostgreSQL database and displays user, session, and metrics data tables according to the templete. 
+Below you can see the repository structure, the data tables are made with the sql script in database/init-scripts folder. Scripts in the web_data folder are used to make a Flask web application that interacts with a PostgreSQL database and displays user, session, and metrics data tables according to the templete. 
 
 | **File/Directory**                  | **Description**                                                                                   |
 |-------------------------------------|---------------------------------------------------------------------------------------------------|
