@@ -26,7 +26,7 @@ Below you can see the repository structure, the data tables are made with the sq
 | `docker-compose.yml`             | YAML file for Docker Compose, used to define and run multi-container Docker applications.         |
 
 
-To connect another container to the postgress database this parameters should be used, connection will be possible given it has access to the same network.
+To connect another container to the postgress database this parameters should be used, connection will be possible given the new container has access to the same network.
 ```
 conn = psycopg2.connect(
     dbname="mydatabase",
