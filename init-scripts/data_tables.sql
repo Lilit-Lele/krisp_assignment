@@ -1,3 +1,7 @@
+-- create users table, each user name should have a unique identifier, and  username cannot be null,
+-- the user_id is primary key, it makes sure that each row is uniquely identifiable
+-- the email must be unique and cannot be null, the timestamp is created when the user is created, 
+-- the default value is current time  
 CREATE TABLE users (
     user_id SERIAL PRIMARY KEY,
     username VARCHAR(100) NOT NULL,
@@ -5,6 +9,10 @@ CREATE TABLE users (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+-- create session table, session_id is piriamy key, it is a uniq identifier for each table
+-- foreign key referenced 'users' table to link each session to a specific user
+-- the session start time cannot be null, the end time can be null, if the session is still ongoing
+-- the session duration is automatically calculated by the difference of start and end times
 CREATE TABLE sessions (
     session_id SERIAL PRIMARY KEY,
     user_id INT REFERENCES users(user_id),
@@ -17,6 +25,10 @@ CREATE TABLE sessions (
     app_version VARCHAR(50)
 );
 
+
+-- Create the 'metrics' table to store metrics related to user sessions
+-- metric_id is primary key, it is unique identifier for each metric record
+-- timstamp is the time when reccord is created and cannot be null
 CREATE TABLE metrics (
     metric_id SERIAL PRIMARY KEY,
     session_id INT REFERENCES sessions(session_id),
